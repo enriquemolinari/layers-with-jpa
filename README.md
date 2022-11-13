@@ -6,7 +6,7 @@ The diagrams below shows each strategy showing how dependencies between packages
 
 What about if in the package by feature a class in the product package needs to talk with a class in the user package. In a similar way, what about if a class in the register component needs to talk with a class in the login component. Should a LoginComponet interface return a User model, or a pretty specific to that component data structure, like AuthUser?
 
-You have to decide, it is a trade off. However, some principles cannot be violated. All dependencies must be done throw the package entry point/interface (domain servicies, not controller please) or the component interface (this is a cleaner way).
+You have to decide, it is a trade off. However, some principles cannot be violated. All dependencies must be done throw the package entry point/interface (domain servicies, not controller please) or the component interface (this is a cleaner way). Or, not depend at all between them, and use async event mechanisms (link in the microservice world). 
 
 ![package-feature-1](https://user-images.githubusercontent.com/11150895/201475215-d4289882-8b30-4f41-b742-fef793b23751.png)  
 
