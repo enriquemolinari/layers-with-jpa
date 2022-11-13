@@ -4,9 +4,9 @@ In this repo you will find different ways to structure the packages in a Java Ap
 
 The diagrams below shows each strategy showing how dependencies between packages are organized. These decisions must be validated, we should take care that dependencies are not violated. We can do this by using separate compilation or tools like ArchUnit.
 
-What about if in the package by feature a class in the product package needs to talk with a class in the user package. In a similar way, what about if a class in the register component needs to talk with a class in the login component. Should a LoginComponet interface return a User model, or a pretty specific to that component data structure, like AuthUser?
+What about if in the package by feature a class in the orders package needs to talk with a class in the user package. In a similar way, what about if a class in the user forgot password component needs to talk with a class in the user login component. Should a LoginComponet interface return a User model, shared by all other components in the system or a pretty specific, decouple from others, object like AuthUser?
 
-You have to decide, it is a trade off. However, some principles cannot be violated. All dependencies must be done throw the package entry point/interface (domain servicies, not controller please) or the component interface (this is a cleaner way). Or, not depend at all between them, and use async event mechanisms (link in the microservice world). 
+You have to decide, it is a trade off. However, some principles cannot be violated. All dependencies between top level packages must be done against the package entry point/interface (domain servicies for instance, not controller please) or the component interface (this is a cleaner way). Or, not depend at all between them, and use async event mechanisms (link in the microservice world). 
 
 ![package-feature](https://user-images.githubusercontent.com/11150895/201540382-55fed0e0-98ff-4429-b5a5-ed7af84e7887.png)  
 
