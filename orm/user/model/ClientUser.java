@@ -44,6 +44,10 @@ public class ClientUser {
     this.roles = Arrays.<Role>asList(roles);
   }
 
+  public String generateToken() {
+    return t.value(this.username);
+  }
+
   public User toUser() {
     return new User() {
       @Override
@@ -104,9 +108,5 @@ public class ClientUser {
 
   public void setPassword(String password) {
     this.password = password;
-  }
-
-  public String generateToken() {
-    return t.value();
   }
 }
