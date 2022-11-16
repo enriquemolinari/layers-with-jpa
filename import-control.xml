@@ -1,0 +1,32 @@
+<?xml version="1.0"?>
+<!DOCTYPE import-control PUBLIC
+        "-//Puppy Crawl//DTD Import Control 1.4//EN"
+        "http://checkstyle.sourceforge.net/dtds/import_control_1_4.dtd">
+
+<import-control pkg="user">
+	<!-- Java packages are allowed for all layers -->
+	<allow pkg="java*.*" regex="true" />
+
+	<!-- user.domain can only talk to the ports -->
+	<subpackage name="domain">
+		<allow pkg="user.domain.portsin" />
+		<allow pkg="user.domain.portsout" />
+		<disallow pkg="user.infrastructure" />
+	</subpackage>
+
+	<!-- infra.web can only talk to portsin -->
+	<subpackage name="infrastructure.web">
+		<allow pkg="user.domain.portsin" />
+		<disallow pkg="user.domain.portsout" />
+		<disallow pkg="user.domain" />
+	</subpackage>
+
+	<!-- other infra subpackages can only talk to portsout -->
+	<!-- they even can't talk to other infra subpackages -->
+	<subpackage name="infrastructure\.(mail|rabbit|data)" regex="true">
+		<allow pkg="user.domain.portsout" />
+		<disallow pkg="user.domain.portsin" />
+		<disallow pkg="user.domain" />
+	</subpackage>
+	
+</import-control>
